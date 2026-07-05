@@ -1,0 +1,23 @@
+# Secrets
+.env
+credentials/*.json
+
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+langchain_qdrant/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.vscode/
+
+# Docs / misc
+README.md
+.claude/
