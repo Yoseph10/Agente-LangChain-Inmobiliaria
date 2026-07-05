@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/kevininofuente/.claude/skills/**)",
+      "Read(//Users/kevininofuente/.claude/skills/agent-project-structure/**)",
+      "Bash(mkdir -p .claude/skills/langchain-modular-agent)",
+      "Bash(mv ~/.claude/skills/langchain-modular-agent/SKILL.md .claude/skills/langchain-modular-agent/SKILL.md)",
+      "Bash(rmdir ~/.claude/skills/langchain-modular-agent)",
+      "Bash(mkdir -p .claude/rules)",
+      "Bash(mv CLAUDE.md .claude/rules/langchain-docs-first.md)",
+      "mcp__docs-langchain__search_docs_by_lang_chain",
+      "Bash(python3 -c \"import langchain, langchain_pinecone; print\\('✅ langchain está en este entorno:', langchain.__version__\\)\")",
+      "Read(//Users/kevininofuente/Documents/DATAPATH/DATAPATH - PROGRAMA AI ENGINEER/**)",
+      "Bash(find . -maxdepth 3 -name \"pyvenv.cfg\")",
+      "Bash(ls ~/miniconda3/envs ~/anaconda3/envs)",
+      "Bash(python3 *)",
+      "Bash(mkdir -p '/Users/kevininofuente/Documents/DATAPATH/DATAPATH - PROGRAMA AI ENGINEER/Mod3-LangChain-Introduccion/LangChain-Modulo3-Sesion2y3-RAG/LangChain-AgenteIA-MultiTool-Pinecone/.claude/skills')",
+      "Bash(ln -sfn /Users/kevininofuente/.claude/skills/agent-prompt-yaml-format '/Users/kevininofuente/Documents/DATAPATH/DATAPATH - PROGRAMA AI ENGINEER/Mod3-LangChain-Introduccion/LangChain-Modulo3-Sesion2y3-RAG/LangChain-AgenteIA-MultiTool-Pinecone/.claude/skills/agent-prompt-yaml-format')",
+      "Read(//opt/homebrew/Caskroom/**)",
+      "Bash(conda --version)",
+      "Bash(conda create *)",
+      "Bash(conda run *)",
+      "mcp__docs-langchain__query_docs_filesystem_docs_by_lang_chain",
+      "Bash(grep -v '^$')"
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+# ============================================
+# Requirements - Agentes IA con LangChain v1.0
+# Autor: Ing. Kevin Inofuente Colque - DataPath
+# ============================================
+
+# Jupyter Notebooks
+ipykernel
+
+# ============================================
+# LANGCHAIN v1.0
+# ============================================
+langchain>=1.0.0
+langchain-openai          # Modelos OpenAI (GPT-4.1)
+langchain-community       # Tools y utilidades comunitarias
+langchain-text-splitters  # RecursiveCharacterTextSplitter y otros splitters
+
+# ============================================
+# HISTÓRICO DE CONVERSACIÓN (PostgreSQL)
+# ============================================
+langchain-postgres        # PostgresChatMessageHistory
+psycopg[binary]           # Driver PostgreSQL v3
+
+# ============================================
+# BASE DE CONOCIMIENTO (RAG con Supabase)
+# ============================================
+supabase>=1.0.0           # Cliente de Supabase
+numpy                     # Cálculo de similitud coseno
+
+# ============================================
+# BASE DE CONOCIMIENTO (RAG con Qdrant)
+# ============================================
+langchain-qdrant          # Integración LangChain + Qdrant
+qdrant-client             # Cliente Qdrant
+pypdf>=3.0.0              # Loader de PDFs (PyPDFLoader)
+
+# ============================================
+# TOOLS
+# ============================================
+langchain-tavily          # Búsqueda en internet (Tavily) - Nueva API
+tavily-python             # Cliente base de Tavily
+gspread                   # Google Sheets (departamentos en alquiler) vía service account
+
+# ============================================
+# WEB SERVER (Chatwoot Integration)
+# ============================================
+fastapi                   # Framework web
+uvicorn                   # Servidor ASGI
+requests                  # HTTP client
+
+# ============================================
+# UTILIDADES
+# ============================================
+python-dotenv             # Variables de entorno (.env)
+PyYAML                    # Carga de configuración modular (prompt.yaml, model_config.yaml)
+
+# ============================================
+# OPCIONAL - Para notebooks y otros proyectos
+# ============================================
+# pypdf>=3.0.0            # Loader de PDFs
+# faiss-cpu               # Vector store local
+# chromadb                # Vector store ChromaDB
+# transformers            # Modelos Hugging Face
+# torch                   # PyTorch
