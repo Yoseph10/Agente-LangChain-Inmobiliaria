@@ -115,7 +115,6 @@ LangChain-AgenteIA-MultiTool-Qdrant/    # (nombre destino; renombrar carpeta des
 │   ├── rag.py                       # Script de ingesta a Qdrant (split + embeddings + upsert)
 │   └── data/                        # Fuentes de la base de conocimiento (.md/.txt)
 │       └── base_conocimiento_alpha_state.md
-├── credentials/                     # Clave JSON del service account (no versionar)
 ├── agent.py                         # ORQUESTADOR v1: loop manual (didáctico, 1 ronda de tools)
 ├── agent_v2.py                      # ORQUESTADOR v2: create_agent (multironda + middleware); mismo contrato
 ├── main.py                          # CANAL CLI (terminal); reusa chat_con_agente
@@ -170,11 +169,13 @@ incluir "Usa esta herramienta cuando…" y, si aplica, "NO uses…".
 - `obtener_fecha_hora(zona_horaria: str = "") -> str` — `zoneinfo`; zona vacía ⇒ `AGENT_TIMEZONE`;
   salida legible en español (día/mes) + ISO.
 - `buscar_departamentos_alquiler(filtro: str = "") -> str` — Google Sheets vía `gspread` con
-  service account (scope `spreadsheets.readonly`); lee todas las filas con
-  `get_all_records()` (fila 1 = cabecera), filtra por coincidencia de texto en cualquier
-  columna si `filtro` no está vacío, y devuelve las filas formateadas o mensaje de
-  "no encontré". Cliente perezoso: la clave JSON se valida al importar; la conexión se abre
-  en la primera consulta.
+  service account (scope `spreadsheets.readonly`), cuya clave JSON completa se toma de la
+  variable de entorno `GOOGLE_SHEETS_SERVICE_ACCOUNT_KEY` (`gspread.service_account_from_dict`,
+  sin archivo en disco — así se puede definir como env var en el despliegue, ej. Easypanel);
+  lee todas las filas con `get_all_records()` (fila 1 = cabecera), filtra por coincidencia de
+  texto en cualquier columna si `filtro` no está vacío, y devuelve las filas formateadas o
+  mensaje de "no encontré". Cliente perezoso: la clave JSON se parsea y valida al importar;
+  la conexión se abre en la primera consulta.
 
 ### 5.3 Memoria — `conversation_history/`
 - `crear_tabla_historial() -> None` — crea la tabla si no existe (idempotente).
@@ -231,7 +232,7 @@ aquí). No duplicar contenido de la base de conocimiento.
 | `QDRANT_COLLECTION` | ➖ (default `alpha-state-conocimiento`) | Colección Qdrant de la base de conocimiento |
 | `TAVILY_API_KEY` | ✅ | Búsqueda en internet |
 | `GOOGLE_SHEETS_SPREADSHEET_ID` | ✅ | ID del Google Sheet de departamentos (entre `/d/` y `/edit` de la URL) |
-| `GOOGLE_SHEETS_CREDENTIALS_FILE` | ➖ (default `credentials/google-service-account.json`) | Ruta a la clave JSON del service account (relativa al proyecto o absoluta) |
+| `GOOGLE_SHEETS_SERVICE_ACCOUNT_KEY` | ✅ | Contenido JSON completo de la clave del service account (no una ruta a archivo; permite configurarla como env var en el despliegue, ej. Easypanel) |
 | `GOOGLE_SHEETS_WORKSHEET` | ➖ (default: primera hoja) | Nombre de la pestaña/hoja a leer |
 | `DB_USER`, `DB_PASSWORD`, `DB_HOST` | ✅ | PostgreSQL/Supabase (historial) |
 | `DB_PORT` | ➖ (default `5432`) | Puerto Postgres |
