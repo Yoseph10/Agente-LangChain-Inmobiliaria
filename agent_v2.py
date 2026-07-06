@@ -60,6 +60,7 @@ from tools.Base_de_conocimiento import buscar_datapath
 from tools.Busqueda_internet import buscar_internet
 from tools.Hora_y_fecha import obtener_fecha_hora
 from tools.google_sheets_departamentos_alquiler import buscar_departamentos_alquiler
+from tools.google_sheets_inquilinos_departamentos import buscar_pago_inquilino
 
 # Histórico de conversación (PostgreSQL / Supabase), sin cambios
 from conversation_history import crear_tabla_historial, get_session_history
@@ -72,6 +73,7 @@ tools = [
     buscar_internet,                # Búsqueda en internet (Tavily)
     obtener_fecha_hora,             # Fecha y hora actual por zona horaria
     buscar_departamentos_alquiler,  # Departamentos en alquiler (Google Sheets)
+    buscar_pago_inquilino,          # Pago mensual del inquilino/propietario (Google Sheets)
 ]
 
 
